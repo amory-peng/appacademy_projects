@@ -26,3 +26,5 @@ Inbox.renderMessage = function(msg) {
 
 
 module.exports = Inbox;
+
+//this is a test
