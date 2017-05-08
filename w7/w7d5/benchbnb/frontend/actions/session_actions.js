@@ -4,9 +4,9 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERROR = 'RECEIVE_ERROR';
 
 //POJOS
-export const receiveCurrentUser = user => ({
+export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
-  user
+  currentUser
 });
 
 export const receiveErrors = errors => ({
@@ -16,10 +16,14 @@ export const receiveErrors = errors => ({
 
 //THUNKS
 export const login = user => dispatch => {
-  SessionAPIUtil.login(user).then((currentUser) => dispatch(receiveCurrentUser(currentUser)));
+  SessionAPIUtil.login(user).then((currentUser) => {
+
+    return dispatch(receiveCurrentUser(currentUser));
+  });
 };
 
 export const logout = dispatch => {
+  console.log("hit action");
   SessionAPIUtil.logout().then(() => dispatch(receiveCurrentUser(null)));
 };
 
