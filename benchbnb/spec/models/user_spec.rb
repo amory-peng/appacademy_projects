@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
-  let(:user) { FactoryGirl.create(:user) }
+  let!(:user) { create(:user) }
 
   describe 'validations' do
     it { should validate_presence_of(:username) }
@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
      context 'when given correct credentials' do
        it 'should find the right user' do
          # test goes here
-         expect(User.find_by_credentials('breakfast', 'password')).to eql(:user)
+         expect(User.find_by_credentials('breakfast', 'password')).to eq(:user)
        end
      end
 
